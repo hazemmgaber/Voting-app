@@ -230,6 +230,6 @@ metadata:
   name: dbsecret
 type: Opaque
 data:
-  superuser: cG9zdGdyZXM=
+  username: cG9zdGdyZXM=
   password: cG9zdGdyZXM=
 
