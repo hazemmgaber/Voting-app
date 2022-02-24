@@ -34,6 +34,13 @@ spec:
       containers:
       - name: redis
         image: redis:alpine
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 6379
           name: redis
@@ -74,6 +81,13 @@ spec:
       containers:
       - name: db
         image: postgres:9.4
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         env:
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
@@ -145,6 +159,13 @@ spec:
       containers:
       - name: result
         image: dockersamples/examplevotingapp_result:before
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 80
           name: result
@@ -185,6 +206,13 @@ spec:
       containers:
       - name: vote
         image: dockersamples/examplevotingapp_vote:before
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 80
           name: vote
@@ -220,6 +248,13 @@ spec:
     spec: 
       containers: 
       - image: dockersamples/examplevotingapp_worker
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         name: worker
 
 # Secret
@@ -232,4 +267,3 @@ type: Opaque
 data:
   username: cG9zdGdyZXM=
   password: cG9zdGdyZXM=
-
