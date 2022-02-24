@@ -78,9 +78,15 @@ spec:
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
         - name: POSTGRES_USER
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: dbsecret
+              key: username
         - name: POSTGRES_PASSWORD
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: dbsecret
+              key: password
         ports:
         - containerPort: 5432
           name: db
@@ -215,3 +221,15 @@ spec:
       containers: 
       - image: dockersamples/examplevotingapp_worker
         name: worker
+
+# Secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dbsecret
+type: Opaque
+data:
+  superuser: cG9zdGdyZXM=
+  password: cG9zdGdyZXM=
+
